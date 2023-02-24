@@ -13,12 +13,11 @@ export default function LoginPage({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const handleLogin = async () => {
+  const handleLogin = async (e) => {
 
-  // };
-
-  const handleLogin = async () => {
     try {
+      console.log("kkkk---");
+
       const response = await axios.post(
         "http://localhost:4000/api/Login/login",
         {
@@ -26,29 +25,13 @@ export default function LoginPage({ navigation }) {
           password: password,
         }
       );
-      console.log("kkkk---");
-      console.log(response, "kkkkkk");
-
-      if (res && res.status === 200) {
-        console.log("logged successfully");
-      } else {
-        console.log("Some error occured");
-      }
-
-      //  if (response.data.message){
-
-      //   console.log("hhhh");
-      //   alert(response.data.message);
-
-      //  }
     } catch (error) {
-      console.error(error.response.data.message);
+      console.error(error.response.data.message,);
     }
   };
 
   const workSpace = () => {
     navigation.navigate("TaskProject");
-    // navigation.navigate("TasksScreen");
   };
 
   const register = () => {
